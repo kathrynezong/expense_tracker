@@ -4,7 +4,7 @@ import calendar
 import datetime
 
 def main():
-    print(f"🎯 Running Expense Tracker!")
+    print("Running Expense Tracker!")
     expense_file_path = "expenses.csv"
     budget = 2000
 
@@ -18,15 +18,15 @@ def main():
     summarize_expenses(expense_file_path, budget)
 
 def get_user_expense():
-    print(f"🎯 Getting User Expense")
+    print("Getting User Expense")
     expense_name = input("Enter expense name: ")
     expense_amount = float(input("Enter expense amount: "))
     expense_categories = [
-        "🍔 Food",
-        "🏠 Home",
-        "💼 Work",
-        "🎉 Fun",
-        "✨ Misc",
+        "Food",
+        "Home",
+        "Work",
+        "Fun",
+        "Misc",
     ]
 
     while True:
@@ -49,7 +49,7 @@ def get_user_expense():
             print("Invalid input. Please enter a number.")
 
 def save_expense_to_file(expense: Expense, expense_file_path):
-    print(f"🎯 Saving User Expense: {expense} to {expense_file_path}")
+    print(f"Saving User Expense: {expense} to {expense_file_path}")
     try:
         # Open the file with UTF-8 encoding
         with open(expense_file_path, "a", encoding="utf-8") as f:
@@ -58,7 +58,7 @@ def save_expense_to_file(expense: Expense, expense_file_path):
         print(f"Error saving expense: {e}")
 
 def summarize_expenses(expense_file_path, budget):
-    print(f"🎯 Summarizing User Expense")
+    print("Summarizing User Expense")
     expenses = []
     try:
         with open(expense_file_path, "r", encoding="utf-8") as f:
@@ -91,10 +91,10 @@ def summarize_expenses(expense_file_path, budget):
         print(f"  {key}: ${amount:.2f}")
 
     total_spent = sum([x.amount for x in expenses])
-    print(f"💵 Total Spent: ${total_spent:.2f}")
+    print(f"Total Spent: ${total_spent:.2f}")
 
     remaining_budget = budget - total_spent
-    print(f"✅ Budget Remaining: ${remaining_budget:.2f}")
+    print(f"Budget Remaining: ${remaining_budget:.2f}")
 
     now = datetime.datetime.now()
     days_in_month = calendar.monthrange(now.year, now.month)[1]
@@ -102,7 +102,7 @@ def summarize_expenses(expense_file_path, budget):
 
     if remaining_days > 0:
         daily_budget = remaining_budget / remaining_days
-        print(green(f"👉 Budget Per Day: ${daily_budget:.2f}"))
+        print(green(f"Budget Per Day: ${daily_budget:.2f}"))
     else:
         print("No remaining days in this month.")
 
